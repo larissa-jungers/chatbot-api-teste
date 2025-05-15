@@ -1,7 +1,11 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from app.routes import chat
 
 app = FastAPI()
+
+# inclui as rotas definidas em routes/chat.py
+app.include_router(chat.router)
 
 # estrutura de dados para as mensagens usando pydantic | definição do formato da mensagem recebida
 class Mensagem(BaseModel):
